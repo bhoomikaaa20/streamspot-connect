@@ -5,7 +5,7 @@ import { MovieCard } from "@/components/movie-card";
 import { Button } from "@/components/ui/button";
 import { resolvePoster, formatDuration } from "@/lib/posters";
 import { useAuth } from "@/hooks/use-auth";
-import { Play, Info, Sparkles } from "lucide-react";
+import { Play, Info, Sparkles, Film, Clock, Globe2, ShieldCheck, Tv, Star } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
 
 export const Route = createFileRoute("/")({
