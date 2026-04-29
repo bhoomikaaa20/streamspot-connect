@@ -164,6 +164,112 @@ function HomePage() {
           </Row>
         )}
 
+        {/* Top 10 picks */}
+        {movies.length > 0 && (
+          <section>
+            <h2 className="mb-4 text-xl font-semibold tracking-tight md:text-2xl">Top 10 this week</h2>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+              {movies.slice(0, 10).map((m, i) => (
+                <div key={m.id} className="relative">
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -left-2 -top-4 z-10 select-none text-7xl font-black leading-none text-primary/30 md:text-8xl"
+                  >
+                    {i + 1}
+                  </span>
+                  <div className="relative z-0 pl-6">
+                    <MovieCard {...m} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Browse by genre */}
+        {genres.length > 0 && (
+          <section>
+            <h2 className="mb-4 text-xl font-semibold tracking-tight md:text-2xl">Browse by genre</h2>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+              {genres.map((g) => (
+                <Link
+                  key={g}
+                  to="/browse"
+                  className="group relative flex h-24 items-center justify-center overflow-hidden rounded-lg border border-border bg-card/60 px-4 text-center transition-all hover:border-primary/60 hover:shadow-glow"
+                >
+                  <div className="absolute inset-0 gradient-card opacity-60 transition-opacity group-hover:opacity-90" />
+                  <span className="relative text-base font-semibold tracking-wide text-foreground md:text-lg">
+                    {g}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Why CineDrift */}
+        <section className="rounded-2xl border border-border bg-card/40 p-6 md:p-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Why CineDrift</h2>
+            <p className="mt-2 text-muted-foreground">
+              Cinematic shorts, on-demand, anywhere. Built for the way you watch today.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Film, title: "Curated catalog", desc: "Hand-picked shorts across every genre." },
+              { icon: Tv, title: "Stream anywhere", desc: "Optimized playback on any device." },
+              { icon: Clock, title: "Resume instantly", desc: "Pick up exactly where you left off." },
+              { icon: ShieldCheck, title: "Secure & private", desc: "Encrypted accounts and protected streams." },
+            ].map((f) => (
+              <div key={f.title} className="rounded-xl border border-border/60 bg-background/40 p-5">
+                <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary">
+                  <f.icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold">{f.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Stats banner */}
+        <section className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card/40 to-background p-6 md:grid-cols-4 md:p-8">
+          {[
+            { label: "Shorts in catalog", value: `${movies.length}+`, icon: Film },
+            { label: "Genres", value: `${genres.length}`, icon: Sparkles },
+            { label: "Available worldwide", value: "24/7", icon: Globe2 },
+            { label: "Avg. user rating", value: "4.8★", icon: Star },
+          ].map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="mx-auto mb-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/15 text-primary">
+                <s.icon className="h-4 w-4" />
+              </div>
+              <div className="text-2xl font-bold md:text-3xl">{s.value}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.label}</div>
+            </div>
+          ))}
+        </section>
+
+        {/* Final CTA */}
+        {!user && (
+          <section className="overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 via-background to-background p-8 text-center md:p-12">
+            <h2 className="text-balance text-2xl font-bold tracking-tight md:text-4xl">
+              Ready to start watching?
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+              Create a free account to save your progress, build your list, and stream instantly.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Button size="lg" asChild>
+                <Link to="/browse">
+                  <Play className="h-5 w-5 fill-current" /> Browse catalog
+                </Link>
+              </Button>
+            </div>
+          </section>
+        )}
+
         {loading && (
           <p className="py-16 text-center text-muted-foreground">Loading catalog…</p>
         )}
