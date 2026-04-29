@@ -71,6 +71,7 @@ function HomePage() {
   const trending = movies.filter((m) => m.category === "Trending");
   const newReleases = movies.filter((m) => m.category === "New Releases");
   const others = movies.filter((m) => !["Trending", "New Releases"].includes(m.category) && m.id !== featured?.id);
+  const genres = Array.from(new Set(movies.map((m) => m.genre))).filter(Boolean);
 
   return (
     <div className="pb-16">
