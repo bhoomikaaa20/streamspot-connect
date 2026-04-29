@@ -192,7 +192,7 @@ function MoviePage() {
 
           {!user && (
             <p className="mt-6 rounded-lg border border-border/60 bg-muted/40 p-4 text-sm text-muted-foreground">
-              <Link to="/auth" className="text-primary hover:underline">Sign in</Link> to save your watch progress and resume later.
+              <Link to="/auth" search={{ mode: "signin", redirect: "/" }} className="text-primary hover:underline">Sign in</Link> to save your watch progress and resume later.
             </p>
           )}
 
