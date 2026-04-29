@@ -14,9 +14,6 @@ export const Route = createFileRoute("/auth")({
     mode: (s.mode === "signup" ? "signup" : "signin") as "signup" | "signin",
     redirect: typeof s.redirect === "string" ? s.redirect : "/",
   }),
-  search: {
-    middlewares: [],
-  },
   head: () => ({
     meta: [
       { title: "Sign in — CineDrift" },
