@@ -68,7 +68,7 @@ function AdminPage() {
     return (
       <div className="container mx-auto flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
         <h1 className="text-2xl font-bold">Admin only</h1>
-        <Button asChild className="mt-4"><Link to="/auth">Sign in</Link></Button>
+        <Button asChild className="mt-4"><Link to="/auth" search={{ mode: "signin", redirect: "/" }}>Sign in</Link></Button>
       </div>
     );
   }

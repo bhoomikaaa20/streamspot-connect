@@ -52,7 +52,7 @@ function MyListPage() {
         <h1 className="text-2xl font-bold">Sign in to track what you watch</h1>
         <p className="mt-2 text-muted-foreground">Your continue-watching list lives here.</p>
         <Button asChild className="mt-6">
-          <Link to="/auth">Sign in</Link>
+          <Link to="/auth" search={{ mode: "signin", redirect: "/" }}>Sign in</Link>
         </Button>
       </div>
     );

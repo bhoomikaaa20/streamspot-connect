@@ -62,10 +62,10 @@ export function SiteHeader() {
           ) : (
             <>
               <Button variant="ghost" size="sm" asChild>
-                <Link to="/auth">Sign in</Link>
+                <Link to="/auth" search={{ mode: "signin", redirect: "/" }}>Sign in</Link>
               </Button>
               <Button size="sm" asChild>
-                <Link to="/auth" search={{ mode: "signup" }}>Sign up</Link>
+                <Link to="/auth" search={{ mode: "signup", redirect: "/" }}>Sign up</Link>
               </Button>
             </>
           )}
